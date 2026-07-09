@@ -28,4 +28,18 @@ Ans:Connects your local project to a remote GitHub repository.
 origin is just the default name for that remote repository.
 11. What does git push do?
 Ans:Uploads your local commits to GitHub.
-12. 
+    Click Run
+    ↓
+    Java calls main()
+    ↓
+    SpringApplication.run()
+    ↓
+    Spring Container is created
+    ↓
+    application.properties is loaded
+    ↓
+    Spring Beans are created
+    ↓
+    Embedded Tomcat starts
+    ↓
+    Application is ready
