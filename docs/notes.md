@@ -43,3 +43,10 @@ Ans:Uploads your local commits to GitHub.
     Embedded Tomcat starts
     ↓
     Application is ready
+    @RestController → Tells Spring that this class handles REST requests.
+    @GetMapping("/welcome") → Maps a GET request for /welcome to a specific method.
+    return → Sends the HTTP response back to the client.
+    Browser is the Client.
+    Spring Boot application is the Server.
+    WelcomeController is a normal Java class annotated with @RestController.
+    Spring creates and manages its object (Bean) automatically.
