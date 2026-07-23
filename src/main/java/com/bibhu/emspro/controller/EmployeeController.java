@@ -5,6 +5,9 @@ import com.bibhu.emspro.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import com.bibhu.emspro.dto.EmployeeResponseDto;
+import com.bibhu.emspro.dto.EmployeeRequestDto;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -16,8 +19,9 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @PostMapping
-    public Employee saveEmployee(@RequestBody Employee employee) {
-        return employeeService.saveEmployee(employee);
+    public ResponseEntity<EmployeeResponseDto> saveEmployee(@RequestBody EmployeeRequestDto requestDto) {
+        EmployeeResponseDto responseDto = employeeService.saveEmployee(requestDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(responseDto);
     }
     @GetMapping
     public List<Employee> getAllEmployees()

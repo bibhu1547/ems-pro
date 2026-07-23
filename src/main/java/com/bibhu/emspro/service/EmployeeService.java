@@ -1,5 +1,7 @@
 package com.bibhu.emspro.service;
 
+import com.bibhu.emspro.dto.EmployeeRequestDto;
+import com.bibhu.emspro.dto.EmployeeResponseDto;
 import com.bibhu.emspro.entity.Employee;
 import com.bibhu.emspro.exception.ResourceNotFoundException;
 import com.bibhu.emspro.repository.EmployeeRepository;
@@ -13,8 +15,23 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    public Employee saveEmployee(Employee employee) {
-        return employeeRepository.save(employee);
+    public EmployeeResponseDto saveEmployee(EmployeeRequestDto requestDto) {
+        //DTO -> Entity
+        Employee employee = new Employee();
+        employee.setName(requestDto.getName());
+        employee.setEmail(requestDto.getEmail());
+        employee.setSalary(requestDto.getSalary());
+
+        //Save to database
+        Employee savedEmployee = employeeRepository.save(employee);
+
+        //Entity -> DTO
+        EmployeeResponseDto responseDto = new EmployeeResponseDto();
+        responseDto.setName(savedEmployee.getName());
+        responseDto.setEmail(savedEmployee.getEmail());
+        responseDto.setId(savedEmployee.getId());
+
+        return responseDto;
     }
 
     public List<Employee> getAllEmployees()
